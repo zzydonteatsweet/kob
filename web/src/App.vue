@@ -1,4 +1,12 @@
 <template>
+  <div>
+    <div>
+      Bot昵称
+    </div>
+    <div>
+      Bot战力
+    </div>
+  </div>
   <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
@@ -6,6 +14,14 @@
   <router-view/>
 </template>
 
+<script>
+export default {
+  name: "App",
+  setup: () => {
+
+  }
+}
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
