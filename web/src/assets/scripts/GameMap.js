@@ -91,11 +91,13 @@ export class GameMap extends AcGameObject {
             for (let j = 0; j < 1000; j ++ ) {
                 let r = parseInt(Math.random() * this.rows);
                 let c = parseInt(Math.random() * this.cols);
+<<<<<<< HEAD
                 if (g[r][c] || g[this.rows - 1 - c][this.cols - 1 - r]) continue;
                 if (r == this.rows - 2 && c == 1 || r == 1 && c == this.cols - 2)
                     continue;
 
                 g[r][c] = g[this.rows - 1 - c][this.cols - 1 - r] = true;
+>>>>>>> e9a8d9fa6798955171f08e7ee1e9d2a128f2bd28
                 break;
             }
         }
