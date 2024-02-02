@@ -2,7 +2,7 @@ package com.kob.backend.service.impl.user.account;
 
 import com.kob.backend.service.impl.utils.UserDetailsImpl;
 import com.kob.backend.utils.JwtUtil;
-import lombok.val;
+//import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -10,7 +10,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Service;
 import com.kob.backend.pojo.User ;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,15 +21,14 @@ public class LoginServiceImpl implements com.kob.backend.service.user.account.Lo
     @Override
     public Map<String, String> getToken(String username, String password) throws Exception {
         Map<String, String> map = new HashMap<>();
+        //  实体化类
         UsernamePasswordAuthenticationToken authenticationToken = new
         UsernamePasswordAuthenticationToken(username, password);
-        System.out.println("Second" + username + " " + password);
         try {
+            //  验证
             Authentication authenticate = authenticationManager.authenticate(authenticationToken);
-            System.out.println(username + " " + password);
             UserDetailsImpl loginUser = (UserDetailsImpl) authenticate.getPrincipal();
 
-            System.out.println("Impl here");
             User user = loginUser.getUser();
             String jwt = JwtUtil.createJWT(user.getId().toString());
             map.put("error_message", "success");

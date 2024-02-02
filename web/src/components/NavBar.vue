@@ -8,25 +8,20 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <!-- active控制聚焦 -->
         <li class="nav-item">
-          <!-- <a class="nav-link" aria-current="page" href="/pk/">对战</a> -->
           <router-link :class="route_name == 'Pk_Index' ? 'nav-link active' : 'nav-link'" :to = "{name: 'Pk_Index'}">对战</router-link>
         </li>
         <li class="nav-item">
-          <!-- <a class="nav-link" href="/record/">对局列表</a> -->
           <router-link :class="route_name == 'Record_Index' ? 'nav-link active' : 'nav-link'" :to = "{name: 'Record_Index'}">对局列表</router-link>
 
         </li>
         <li class="nav-item">
-          <!-- <a class="nav-link" href="/rank_list/">排行榜</a> -->
           <router-link :class="route_name == 'Rank_List' ? 'nav-link active' : 'nav-link'" :to = "{name: 'Rank_List'}">排行榜</router-link>
 
         </li>
       </ul>
       <span class="navbar-text">
       <ul class="navbar-nav" v-if="$store.state.user.is_login">
-        <!-- active控制聚焦 -->
          <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             {{ $store.state.user.username }}
@@ -34,16 +29,14 @@
 
           <ul class="dropdown-menu dropdown-menu-dark bg-dark">
             <li>
-                <!-- <a class="dropdown-item" href="/user/bot/">我的bot</a> -->
                       <router-link class="dropdown-item" :to = "{name: 'User_Bot_Index'}">我的bot</router-link>
             </li>
-            <!-- !!! -->
             <li><a class="dropdown-item" href="#" @click="logout" >退出</a></li>
           </ul>
         </li>
  
       </ul>
-       <ul class="navbar-nav" v-else>
+       <ul class="navbar-nav" v-else-if="!$store.state.user.pulling_info">
           <li class="nav-item">
             <router-link class="nav-link" :to="{name: 'user_account_login'}" role="button">
               登录

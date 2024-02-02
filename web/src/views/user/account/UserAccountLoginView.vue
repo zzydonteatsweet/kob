@@ -1,5 +1,5 @@
 <template>
-    <ContentField>
+    <ContentField v-if="!$store.state.user.pulling_info">
         <div class="row justify-content-md-center">
             <div class="col-3">
                 <form @submit.prevent="login">
@@ -34,14 +34,27 @@ import router from '../../../router/index';
             let username = ref('') ;
             let password = ref('') ;
             let error_message = ref('') ;
-            
+            const jwt_token = localStorage.getItem("jwt_token") ;
+            if(jwt_token) {
+                store.commit("updateToken", jwt_token) ;
+                store.dispatch("getinfo", {
+                    success() {
+                        store.commit("updatePullingInfo", false) ;
+                        router.push({name: "Home"}) ;
+                    },
+                    error() {
+                        store.commit("updatePullingInfo", false) ;
+                    }
+                })
+            }else {
+                store.commit("updatePullingInfo", false) ;
+            } 
             const login = () => {
                 error_message.value = "" ;
                 store.dispatch("login", {
                     username: username.value,
                     password: password.value,
                     success() {
-                        console.log("No") ;
                         store.dispatch("getinfo", {
                             success() {
                                 router.push({ name: 'Home'}) ;
