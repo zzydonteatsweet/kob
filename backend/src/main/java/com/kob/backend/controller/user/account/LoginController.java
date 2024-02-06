@@ -15,7 +15,6 @@ public class LoginController {
 
     @PostMapping("/user/account/token/")
     public Map<String,String> getToken(@RequestParam Map<String,String> map) throws Exception{
-        System.out.println("Controller in");
         String username = map.get("username") ;
         String password = map.get("password") ;
         return loginService.getToken(username, password) ;
