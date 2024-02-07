@@ -33,13 +33,13 @@ public class AddServiceImpl implements AddService {
 
         Map<String, String> map = new HashMap<>() ;
         if(name == null || name.length() == 0) {
-            map.put("error_message", "不能为空") ;
+            map.put("error_message", "名字不能为空") ;
             return map ;
         }else if(description.length() > 300) {
             map.put("error_message", "描述长度过长") ;
             return map ;
         }else if(description == null || description.length() == 0) {
-            map.put("error_message", "不能什么都没留下") ;
+            map.put("error_message", "描述不能什么都没留下") ;
             return map ;
         }else if(content == null || content.length() == 0) {
             map.put("error_message", "代码不能为空") ;

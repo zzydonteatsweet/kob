@@ -32,10 +32,7 @@ public class RemoveServiceImpl implements RemoveService {
             map.put("error_message", "Bot不存在") ;
             return map ;
         }
-        System.out.println("new BOT_ID" + bot.getId());
-        System.out.println(bot.getName());
-        System.out.println(bot.getUserId());
-        System.out.println(user.getId());
+
         if(!bot.getUserId().equals(user.getId())) {
             map.put("error_message", "你没有权限") ;
             return map ;
