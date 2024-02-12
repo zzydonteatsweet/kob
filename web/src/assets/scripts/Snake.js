@@ -57,7 +57,7 @@ export class Snake extends AcGameObject{
         for(let i = k ; i > 0 ; i --) {
             this.cells[i] = JSON.parse(JSON.stringify(this.cells[i-1])) ;
         }
-        if(!this.gamemap.check_valid(this.next_cell)) this.status = "dead" ;
+        // if(!this.gamemap.check_valid(this.next_cell)) this.status = "dead" ;
     }
 
     set_direction(d) {
@@ -81,7 +81,6 @@ export class Snake extends AcGameObject{
             this.status = "idle" ;
 
             if(!this.check_tail_increasing()) {
-                console.log("Yes") ;
                 this.cells.pop() ;
             }
         }else {
@@ -104,7 +103,7 @@ export class Snake extends AcGameObject{
     }
 
     update() {
-        if(this.status == "move")
+        if(this.status === "move")
             this.update_move() ;
         this.render() ;
     }
@@ -114,7 +113,7 @@ export class Snake extends AcGameObject{
         const ctx = this.gamemap.ctx ;
 
         ctx.fillStyle = this.color ;
-        if(this.status == "dead") ctx.fillStyle = "white" ;
+        if(this.status === "dead") ctx.fillStyle = "white" ;
         for(const cell of this.cells) {
             ctx.beginPath() ;
             ctx.arc(cell.x * L, cell.y *L, L / 2, 0, Math.PI * 2) ;

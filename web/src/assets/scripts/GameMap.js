@@ -38,37 +38,37 @@ export class GameMap extends AcGameObject {
         return true; 
     }
 
-    check_connectivity(g, sx, sy, tx, ty) {
-        if (sx == tx && sy == ty) return true;
-        g[sx][sy] = true;
+    // check_connectivity(g, sx, sy, tx, ty) {
+    //     if (sx == tx && sy == ty) return true;
+    //     g[sx][sy] = true;
 
-        let dx = [-1, 0, 1, 0], dy = [0, 1, 0, -1];
-        for (let i = 0; i < 4; i ++ ) {
-            let x = sx + dx[i], y = sy + dy[i];
-            if (!g[x][y] && this.check_connectivity(g, x, y, tx, ty))
-                return true;
-        }
-        return false;
-    }
+    //     let dx = [-1, 0, 1, 0], dy = [0, 1, 0, -1];
+    //     for (let i = 0; i < 4; i ++ ) {
+    //         let x = sx + dx[i], y = sy + dy[i];
+    //         if (!g[x][y] && this.check_connectivity(g, x, y, tx, ty))
+    //             return true;
+    //     }
+    //     return false;
+    // }
 
-    check_valid(cell) {
-        for(const wall of this.walls) {
-            if(wall.r == cell.r && wall.c == cell.c) {
-                return false ;
-            }
-        }
-        for (const snake of this.snakes) {
-            let k = snake.cells.length;
-            if (!snake.check_tail_increasing()) {  // 当蛇尾会前进的时候，蛇尾不要判断
-                k -- ;
-            }
-            for (let i = 0; i < k; i ++ ) {
-                if (snake.cells[i].r === cell.r && snake.cells[i].c === cell.c)
-                    return false;
-            }
-        }
-        return true ;
-    }
+    // check_valid(cell) {
+    //     for(const wall of this.walls) {
+    //         if(wall.r == cell.r && wall.c == cell.c) {
+    //             return false ;
+    //         }
+    //     }
+    //     for (const snake of this.snakes) {
+    //         let k = snake.cells.length;
+    //         if (!snake.check_tail_increasing()) {  // 当蛇尾会前进的时候，蛇尾不要判断
+    //             k -- ;
+    //         }
+    //         for (let i = 0; i < k; i ++ ) {
+    //             if (snake.cells[i].r === cell.r && snake.cells[i].c === cell.c)
+    //                 return false;
+    //         }
+    //     }
+    //     return true ;
+    // }
 
     create_walls() {
         const g = this.store.state.pk.gamemap ;
@@ -88,14 +88,22 @@ export class GameMap extends AcGameObject {
 
         // const [snake0, snake1] = this.snakes ;
         this.ctx.canvas.addEventListener("keydown", e => {
-            if (e.key === 'w') this.snakes[0].set_direction(0);
-            else if (e.key === 'd') this.snakes[0].set_direction(1);
-            else if (e.key === 's') this.snakes[0].set_direction(2);
-            else if (e.key === 'a') this.snakes[0].set_direction(3);
-            else if (e.key === 'ArrowUp') this.snakes[1].set_direction(0);
-            else if (e.key === 'ArrowRight') this.snakes[1].set_direction(1);
-            else if (e.key === 'ArrowDown') this.snakes[1].set_direction(2);
-            else if (e.key === 'ArrowLeft') this.snakes[1].set_direction(3);
+            let d = -1 ;
+            if (e.key === 'w') d = 0 ;
+            else if (e.key === 'd') d = 1 ;
+            else if (e.key === 's') d = 2 ;
+            else if (e.key === 'a') d = 3 ;
+            // else if (e.key === 'ArrowUp') this.snakes[1].set_direction(0);
+            // else if (e.key === 'ArrowRight') this.snakes[1].set_direction(1);
+            // else if (e.key === 'ArrowDown') this.snakes[1].set_direction(2);
+            // else if (e.key === 'ArrowLeft') this.snakes[1].set_direction(3);
+
+            if(d >= 0) {
+                this.store.state.pk.socket.send(JSON.stringify({
+                    event: "move",
+                    direction: d,
+                })) ;
+            }
         }) ;
     }
 
