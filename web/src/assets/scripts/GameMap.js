@@ -38,38 +38,6 @@ export class GameMap extends AcGameObject {
         return true; 
     }
 
-    // check_connectivity(g, sx, sy, tx, ty) {
-    //     if (sx == tx && sy == ty) return true;
-    //     g[sx][sy] = true;
-
-    //     let dx = [-1, 0, 1, 0], dy = [0, 1, 0, -1];
-    //     for (let i = 0; i < 4; i ++ ) {
-    //         let x = sx + dx[i], y = sy + dy[i];
-    //         if (!g[x][y] && this.check_connectivity(g, x, y, tx, ty))
-    //             return true;
-    //     }
-    //     return false;
-    // }
-
-    // check_valid(cell) {
-    //     for(const wall of this.walls) {
-    //         if(wall.r == cell.r && wall.c == cell.c) {
-    //             return false ;
-    //         }
-    //     }
-    //     for (const snake of this.snakes) {
-    //         let k = snake.cells.length;
-    //         if (!snake.check_tail_increasing()) {  // 当蛇尾会前进的时候，蛇尾不要判断
-    //             k -- ;
-    //         }
-    //         for (let i = 0; i < k; i ++ ) {
-    //             if (snake.cells[i].r === cell.r && snake.cells[i].c === cell.c)
-    //                 return false;
-    //         }
-    //     }
-    //     return true ;
-    // }
-
     create_walls() {
         const g = this.store.state.pk.gamemap ;
         for (let r = 0; r < this.rows; r ++ ) {
