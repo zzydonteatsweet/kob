@@ -13,6 +13,8 @@ import java.util.List;
 @NoArgsConstructor
 public class Player {
     private Integer id ;
+    private Integer botId ;
+    private String botCode;
     private Integer sx, sy ;
     private List<Integer> steps ;
 

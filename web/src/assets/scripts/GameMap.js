@@ -67,6 +67,7 @@ export class GameMap extends AcGameObject {
             // else if (e.key === 'ArrowLeft') this.snakes[1].set_direction(3);
 
             if(d >= 0) {
+                console.log("move push down" + d);
                 this.store.state.pk.socket.send(JSON.stringify({
                     event: "move",
                     direction: d,

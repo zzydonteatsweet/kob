@@ -1,20 +1,20 @@
 package com.kob.backend.service.impl.user.account;
 
 import com.kob.backend.service.impl.utils.UserDetailsImpl;
+import com.kob.backend.service.user.account.LoginService;
 import com.kob.backend.utils.JwtUtil;
 //import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Service;
 import com.kob.backend.pojo.User ;
 import java.util.HashMap;
 import java.util.Map;
 
 @Service
-public class LoginServiceImpl implements com.kob.backend.service.user.account.LoginService {
+public class LoginServiceImpl implements LoginService {
     @Autowired
     private AuthenticationManager authenticationManager ;
 

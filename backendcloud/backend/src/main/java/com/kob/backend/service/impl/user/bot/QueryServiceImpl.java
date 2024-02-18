@@ -1,11 +1,11 @@
 package com.kob.backend.service.impl.user.bot;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.kob.backend.service.impl.utils.UserDetailsImpl;
+import com.kob.backend.service.user.bot.QueryService;
 import com.kob.backend.mapper.BotMapper;
 import com.kob.backend.pojo.Bot;
 import com.kob.backend.pojo.User;
-import com.kob.backend.service.impl.utils.UserDetailsImpl;
-import com.kob.backend.service.user.bot.QueryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
