@@ -13,7 +13,7 @@ public class QueryController {
     @Autowired
     QueryService queryService ;
 
-    @GetMapping("user/bot/getlist/")
+    @GetMapping("/api/user/bot/getlist/")
     public List<Bot> queryBot() {
         return queryService.getList();
     }

@@ -94,7 +94,6 @@ public class WebSocketServer {
                 botB) ;
         game.createMap();
         game.start();
-        System.out.println("userId " + a.getId() + " " + b.getId());
         if(users.get(a.getId()) != null)
             users.get(a.getId()).game = game ;
         if(users.get(b.getId()) != null)
@@ -156,7 +155,6 @@ public class WebSocketServer {
         // 从Client接收消息
         JSONObject data = JSONObject.parseObject(message) ;
         String event = data.getString("event") ;
-        System.out.println("Received " + event);
         if("start-matching".equals(event)) {
             startMatching(data.getInteger("bot_id"));
         }else if("stop-matching".equals(event)){

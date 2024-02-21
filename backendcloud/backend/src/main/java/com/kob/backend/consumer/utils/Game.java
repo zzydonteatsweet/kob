@@ -146,19 +146,27 @@ public class Game extends Thread {
             you = playerA ;
             me = playerB ;
         }
-        return getMapString() + "#"
-                + me.getSx()
-                + " #"
-                + me.getSy()
-                +"#("
-                +me.getStepsString()
-                +")#"
-                +you.getSx()
-                +"#"
-                +you.getSy()
-                +"#("
-                +you.getStepsString()
-                +")#";
+//        return getMapString() + "#"
+//                + me.getSx()
+//                + " #"
+//                + me.getSy()
+//                +"#("
+//                +me.getStepsString()
+//                +")#"
+//                +you.getSx()
+//                +"#"
+//                +you.getSy()
+//                +"#("
+//                +you.getStepsString()
+//                +")#";
+        return getMapString() + "#" +
+                me.getSx() + "#" +
+                me.getSy() + "#(" +
+                me.getStepsString() + ")#" +
+                you.getSx() + "#" +
+                you.getSy() + "#(" +
+                you.getStepsString() + ")";
+
     }
     private void sendBotCode(Player player) {
         if(player.getBotId().equals(-1)) return ;

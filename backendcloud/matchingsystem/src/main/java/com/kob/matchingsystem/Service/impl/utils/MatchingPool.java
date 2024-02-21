@@ -85,11 +85,8 @@ public class MatchingPool extends Thread{
         MultiValueMap<String,String> data = new LinkedMultiValueMap<>();
         data.add("a_id", a.getUserId().toString());
         data.add("b_id", b.getUserId().toString());
-        System.out.println("matche system successed");
         data.add("a_bot_id", a.getBotId().toString());
         data.add("b_bot_id", b.getBotId().toString());
-//        System.out.println(a.getBotId());
-//        System.out.println(b.getBotId());
         restTemplate.postForObject(startGameUrl, data, String.class);
     }
 
